@@ -37,7 +37,7 @@ python main.py
 
 ## Bibtex
 
-Please cite our paper if you use our source code.
+Please cite our paper if it is helpful to your work:
 
 ```
 @article{dong2020deep,
