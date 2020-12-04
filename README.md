@@ -14,6 +14,8 @@ To appear at NeurIPS 2020 (**Oral Presentation**)
 
 We present a simple and effective approach for non-blind image deblurring, combining classical techniques and deep learning. In contrast to existing methods that deblur the image directly in the standard image space, we propose to perform an explicit deconvolution process in a feature space by integrating a classical Wiener deconvolution framework with learned deep features. A multi-scale feature refinement module then predicts the deblurred image from the deconvolved deep features, progressively recovering detail and small-scale structures. The proposed model is trained in an end-to-end manner and evaluated on scenarios with both simulated and real-world image blur. Our extensive experimental results show that the proposed deep Wiener deconvolution network facilitates deblurred results with visibly fewer artifacts. Moreover, our approach quantitatively outperforms state-of-the-art non-blind image deblurring methods by a wide margin.
 
+![Pipeline](https://gitlab.mpi-klsb.mpg.de/jdong/dwdn/raw/master/images/pipeline5.png)
+
 ## Requirements
 
 Compatible with Python 3
