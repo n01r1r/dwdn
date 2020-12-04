@@ -41,7 +41,7 @@ python main.py
 
 ## Pre-trained Model
 
-./model/model.pt
+./model/model_DWDN.pt
 
 ## Bibtex
 
