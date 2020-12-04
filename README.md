@@ -16,6 +16,8 @@ We present a simple and effective approach for non-blind image deblurring, combi
 
 ![Pipeline](https://gitlab.mpi-klsb.mpg.de/jdong/dwdn/raw/master/images/pipeline5.png)
 
+>Deep Wiener deconvolution network. While previous work mostly relies on a deconvolution in the image space, our network first extracts useful feature information from the blurry input image and then conducts an explicit Wiener deconvolution in the (deep) feature space through Eqs. (3) and (8). A multi-scale encoder-decoder network progressively restores clear images, with fewer artifacts and finer detail. The whole network is trained in an end-to-end manner.
+
 ## Requirements
 
 Compatible with Python 3
