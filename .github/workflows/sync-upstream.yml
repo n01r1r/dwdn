@@ -1,0 +1,35 @@
+name: Sync GitLab upstream
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-gitlab-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out downstream main with complete history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Fetch and merge original GitLab history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add upstream https://gitlab.mpi-klsb.mpg.de/jdong/dwdn.git
+          git -c http.version=HTTP/1.1 -c http.lowSpeedLimit=1024 -c http.lowSpeedTime=60 fetch --tags upstream refs/heads/master:refs/remotes/upstream/master
+          git merge-base --is-ancestor origin/master upstream/master
+          git merge --no-edit upstream/master
+          git push --atomic origin HEAD:refs/heads/main refs/remotes/upstream/master:refs/heads/master --tags
